@@ -18,9 +18,29 @@
     <button igxButton="icon" type="icon" [disabled]="false" class="icon-button">
       <igx-icon class="icon">notifications</igx-icon>
     </button>
-    <igx-avatar [roundShape]="true" src="https://d3cg6cexo8t5ug.cloudfront.net/avatars/avatar6.png" size="small" class="avatar"></igx-avatar>
+    <igx-avatar [roundShape]="true" src="https://d3cg6cexo8t5ug.cloudfront.net/avatars/avatar6.png" size="small" [igxToggleAction]="dialogWindow" class="avatar"></igx-avatar>
   </div>
 </div>
 <div class="views-container">
   <router-outlet></router-outlet>
 </div>
+<igx-dialog [closeOnOutsideSelect]="true" [closeOnEscape]="true" (onLeftButtonSelect)="dialogWindow.toggle()" (onRightButtonSelect)="dialogWindow.toggle()" #dialogWindow class="dialog-window">
+  <div>
+    <div class="column-layout column">
+      <h2 class="title_1">Login</h2>
+      <igx-input-group placeholder type="border" class="user-input">
+        <label igxLabel for="inputField">Username</label>
+        <input type="text" name="inputField" [required]="false" [disabled]="false" igxInput />
+        <igx-hint>sample hint text</igx-hint>
+      </igx-input-group>
+      <igx-input-group type="border" class="user-input">
+        <label igxLabel for="inputField">Password</label>
+        <input type="password" name="inputField" [required]="false" [disabled]="false" igxInput />
+      </igx-input-group>
+      <button igxButton="raised" [disabled]="false" class="user-input">
+        <span>Login</span>
+      </button>
+      <a href target="_self" class="link">Haven't registered yet?</a>
+    </div>
+  </div>
+</igx-dialog>
